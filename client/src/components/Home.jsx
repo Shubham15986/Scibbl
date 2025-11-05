@@ -61,11 +61,11 @@ const Home = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen">
-      <div className="bg-gray-800 p-8 rounded-lg shadow-xl w-full max-w-md">
+    <div className="flex items-center justify-center min-h-screen p-4">
+      <div className="bg-gray-800 p-6 md:p-8 rounded-lg shadow-xl w-full max-w-md">
         
         <div className="flex justify-between items-center mb-6">
-          <h1 className="text-3xl font-bold">Welcome, {user.username}!</h1>
+          <h1 className="text-2xl md:text-3xl font-bold">Welcome, {user.username}!</h1>
           <button
             onClick={logout}
             className="bg-red-600 hover:bg-red-700 text-white font-bold py-1 px-3 rounded text-sm"
@@ -90,8 +90,8 @@ const Home = () => {
             type="text"
             value={avatar}
             onChange={(e) => setAvatar(e.target.value)}
-            className="w-full p-2 bg-gray-700 rounded border border-gray-600 focus:outline-none focus:border-blue-500"
-            placeholder="Enter an emoji (e.g., 😀)"
+            className="w-full p-3 bg-gray-700 rounded border border-gray-600 focus:outline-none focus:border-blue-500 text-center text-2xl"
+            placeholder="😀"
             maxLength={2}
           />
         </div>
@@ -99,7 +99,7 @@ const Home = () => {
         <div className="mb-6">
           <button
             onClick={handleCreateRoom}
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-200"
+            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded transition duration-200"
           >
             Create Room
           </button>
@@ -111,17 +111,17 @@ const Home = () => {
           <div className="flex-grow border-t border-gray-600"></div>
         </div>
 
-        <div className="flex space-x-2">
+        <div className="flex flex-col sm:flex-row gap-3">
           <input
             type="text"
             value={roomId}
             onChange={(e) => setRoomId(e.target.value.toUpperCase())}
-            className="w-3/4 p-2 bg-gray-700 rounded border border-gray-600 focus:outline-none focus:border-green-500"
+            className="flex-grow p-3 bg-gray-700 rounded border border-gray-600 focus:outline-none focus:border-green-500"
             placeholder="Enter Room ID"
           />
           <button
             onClick={handleJoinRoom}
-            className="w-1/4 bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded transition duration-200"
+            className="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded transition duration-200"
           >
             Join
           </button>

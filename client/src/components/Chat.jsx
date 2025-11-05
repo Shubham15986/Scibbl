@@ -104,7 +104,7 @@ const Chat = ({ roomId, messages, isMyTurn, chatTarget, setChatTarget, privateMe
       </h2>
       
       {/* 5. RENDER THE CORRECT MESSAGE LIST */}
-      <div className="flex-grow bg-gray-900 rounded p-3 overflow-y-auto h-64 md:h-96">
+      <div className="flex-grow bg-gray-900 rounded p-3 overflow-y-auto h-48 md:h-64 lg:h-96">
         {messagesToShow.map(renderMessage)}
         <div ref={messagesEndRef} />
       </div>

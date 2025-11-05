@@ -73,7 +73,7 @@ const Lobby = ({ roomInfo }) => {
   };
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-5xl mx-auto p-4">
       
       <div className="bg-gray-800 bg-opacity-90 p-6 rounded-lg shadow-lg">
         <h2 className="text-2xl font-semibold mb-4 border-b border-gray-700 pb-2">

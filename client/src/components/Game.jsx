@@ -208,11 +208,11 @@ const Game = ({ roomInfo, setRoomInfo }) => {
       )}
 
       {/* --- Main Game Layout --- */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4 max-w-7xl mx-auto">
+      <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 max-w-7xl mx-auto p-4">
         
         {/* Host Info Banner - Full Width */}
         {roomInfo.hostUsername && (
-          <div className="md:col-span-4 bg-gradient-to-r from-purple-900 to-blue-900 p-3 rounded-lg shadow-lg">
+          <div className="lg:col-span-4 bg-gradient-to-r from-purple-900 to-blue-900 p-3 rounded-lg shadow-lg">
             <div className="flex items-center justify-center">
               <span className="text-2xl mr-2">👑</span>
               <span className="font-bold text-lg">Host: {roomInfo.hostUsername}</span>
@@ -222,7 +222,7 @@ const Game = ({ roomInfo, setRoomInfo }) => {
         )}
         
         {/* --- 4. PASS NEW PROPS TO SCOREBOARD --- */}
-        <div className="md:col-span-1 bg-gray-800 p-4 rounded-lg shadow-lg">
+        <div className="lg:col-span-1 bg-gray-800 p-4 rounded-lg shadow-lg order-2 lg:order-1">
           <Scoreboard
             players={roomInfo.players}
             currentDrawerId={currentDrawer ? currentDrawer.id : null}
@@ -233,7 +233,7 @@ const Game = ({ roomInfo, setRoomInfo }) => {
         </div>
 
         {/* Center Column: Canvas & Info */}
-        <div className="md:col-span-2">
+        <div className="lg:col-span-2 order-1 lg:order-2">
           {/* Info Bar */}
           <div className="bg-gray-800 p-3 text-center rounded-t-lg flex justify-between items-center">
             <div className="w-1/3 text-left">
@@ -266,7 +266,7 @@ const Game = ({ roomInfo, setRoomInfo }) => {
         </div>
 
         {/* --- 5. PASS NEW PROPS TO CHAT --- */}
-        <div className="md:col-span-1 bg-gray-800 p-4 rounded-lg shadow-lg">
+        <div className="lg:col-span-1 bg-gray-800 p-4 rounded-lg shadow-lg order-3">
           <Chat
             roomId={roomInfo.roomId}
             messages={messages}

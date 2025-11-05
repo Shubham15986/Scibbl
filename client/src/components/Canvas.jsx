@@ -130,7 +130,7 @@ const Canvas = ({ roomId, isMyTurn }) => {
         onTouchMove={draw}
         onTouchEnd={stopDrawing}
         onTouchCancel={stopDrawing}
-        className="w-full h-[450px] bg-white rounded-b-lg cursor-crosshair"
+        className="w-full h-[250px] sm:h-[350px] md:h-[450px] bg-white rounded-b-lg cursor-crosshair"
         style={{ 
           touchAction: 'none',
           WebkitUserSelect: 'none',
