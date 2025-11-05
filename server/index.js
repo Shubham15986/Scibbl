@@ -51,7 +51,8 @@ app.post('/api/auth/register', async (req, res) => {
 
     return res.status(201).json({ msg: 'User registered successfully!' });
   } catch (err) {
-    return res.status(500).send('Server Error');
+    console.error('Registration error:', err);
+    return res.status(500).json({ msg: 'Server Error' });
   }
 });
 
@@ -81,7 +82,8 @@ app.post('/api/auth/login', async (req, res) => {
       user: { id: user._id, username: user.username, email: user.email },
     });
   } catch (err) {
-    return res.status(500).send('Server Error');
+    console.error('Login error:', err);
+    return res.status(500).json({ msg: 'Server Error' });
   }
 });
 
@@ -93,7 +95,8 @@ app.get('/api/user/stats', authMiddleware, async (req, res) => {
     }
     return res.json(user.stats);
   } catch (err) {
-    return res.status(500).send('Server Error');
+    console.error('Stats error:', err);
+    return res.status(500).json({ msg: 'Server Error' });
   }
 });
 
