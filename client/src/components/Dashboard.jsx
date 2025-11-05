@@ -14,7 +14,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const res = await fetch('http://localhost:3001/api/user/stats', {
+        const res = await fetch(`${process.env.REACT_APP_BACKEND_URL || 'http://localhost:3001'}/api/user/stats`, {
           headers: {
             'x-auth-token': token, // Send the token
           },

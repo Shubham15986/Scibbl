@@ -2,7 +2,7 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
 // The URL of our backend auth routes
-const API_URL = "http://localhost:3001/api/auth";
+const API_URL = `${process.env.REACT_APP_BACKEND_URL || 'http://localhost:3001'}/api/auth`;
 
 const AuthContext = createContext(null);
 
