@@ -1,4 +1,4 @@
-services:
+
   - type: web
     name: scribble-backend
     runtime: node
@@ -30,5 +30,5 @@ services:
         fromService:
           type: web
           name: scribble-backend
-          property: host
+          property: url
     plan: free
