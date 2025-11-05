@@ -1,0 +1,32 @@
+services:
+  - type: web
+    name: scribble-backend
+    runtime: node
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: MONGO_URI
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: CLIENT_URL
+        sync: false
+      - key: PORT
+        fromService:
+          type: web
+          name: scribble-backend
+          property: port
+    plan: free
+
+  - type: web
+    name: scribble-frontend
+    runtime: node
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: REACT_APP_BACKEND_URL
+        fromService:
+          type: web
+          name: scribble-backend
+          property: host
+    plan: free

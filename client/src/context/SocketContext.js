@@ -3,7 +3,7 @@ import React, { createContext, useContext, useEffect, useState } from 'react';
 import { io } from 'socket.io-client';
 
 
-const socket = io('http://localhost:3001', {
+const socket = io(process.env.REACT_APP_BACKEND_URL || 'http://localhost:3001', {
   transports: ['websocket', 'polling'],
   reconnection: true,
   reconnectionDelay: 1000,

@@ -39,8 +39,8 @@ A real-time multiplayer drawing and guessing game built with React, Node.js, Soc
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/yourusername/scribble-clone.git
-cd scribble-clone
+git clone https://github.com/Shubham15986/Scibbl.git
+cd Scibbl
 ```
 
 2. **Install server dependencies**
@@ -61,7 +61,13 @@ Create a `.env` file in the `server` directory:
 ```env
 MONGO_URI=your_mongodb_connection_string
 JWT_SECRET=your_secret_key_here
-PORT=3001
+CLIENT_URL=https://your-frontend-service.onrender.com
+PORT=10000
+```
+
+Create a `.env` file in the `client` directory:
+```env
+REACT_APP_BACKEND_URL=https://your-backend-service.onrender.com
 ```
 
 5. **Start the development servers**
@@ -80,6 +86,27 @@ npm start
 
 6. **Open your browser**
 Navigate to `http://localhost:3000`
+
+### Deploying to Render
+
+1. **Connect your GitHub repository to Render**
+   - Go to [Render Dashboard](https://dashboard.render.com)
+   - Click "New" and select "Blueprint"
+   - Connect your GitHub repository: `https://github.com/Shubham15986/Scibbl`
+   - Use the `render.yaml` file for configuration
+
+2. **Set environment variables in Render**
+   - For the backend service:
+     - `MONGO_URI`: Your MongoDB connection string
+     - `JWT_SECRET`: A secure random string
+     - `CLIENT_URL`: Your frontend URL (e.g., `https://scribble-frontend.onrender.com`)
+   - For the frontend service:
+     - `REACT_APP_BACKEND_URL`: Your backend URL (e.g., `https://scribble-backend.onrender.com`)
+
+3. **Deploy**
+   - Render will automatically build and deploy both services
+   - The frontend will be available at the generated URL
+   - The backend will be available at its generated URL
 
 ## 🎮 How to Play
 
