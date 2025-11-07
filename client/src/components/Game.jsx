@@ -208,21 +208,21 @@ const Game = ({ roomInfo, setRoomInfo }) => {
       )}
 
       {/* --- Main Game Layout --- */}
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 max-w-7xl mx-auto p-4">
+      <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 max-w-7xl mx-auto p-2 sm:p-4">
         
         {/* Host Info Banner - Full Width */}
         {roomInfo.hostUsername && (
-          <div className="lg:col-span-4 bg-gradient-to-r from-purple-900 to-blue-900 p-3 rounded-lg shadow-lg">
-            <div className="flex items-center justify-center">
+          <div className="lg:col-span-4 bg-gradient-to-r from-purple-900 to-blue-900 p-3 rounded-lg shadow-lg order-1">
+            <div className="flex items-center justify-center text-center">
               <span className="text-2xl mr-2">👑</span>
-              <span className="font-bold text-lg">Host: {roomInfo.hostUsername}</span>
-              <span className="text-sm ml-3 text-gray-300">Room: {roomInfo.roomId}</span>
+              <span className="font-bold text-base sm:text-lg">Host: {roomInfo.hostUsername}</span>
+              <span className="text-xs sm:text-sm ml-3 text-gray-300 hidden sm:block">Room: {roomInfo.roomId}</span>
             </div>
           </div>
         )}
         
-        {/* --- 4. PASS NEW PROPS TO SCOREBOARD --- */}
-        <div className="lg:col-span-1 bg-gray-800 p-4 rounded-lg shadow-lg order-2 lg:order-1">
+        {/* --- Scoreboard (Left Column) --- */}
+        <div className="lg:col-span-1 bg-gray-800 p-4 rounded-lg shadow-lg order-3 lg:order-1">
           <Scoreboard
             players={roomInfo.players}
             currentDrawerId={currentDrawer ? currentDrawer.id : null}
@@ -232,16 +232,15 @@ const Game = ({ roomInfo, setRoomInfo }) => {
           />
         </div>
 
-        {/* Center Column: Canvas & Info */}
+        {/* --- Center Column: Canvas & Info --- */}
         <div className="lg:col-span-2 order-1 lg:order-2">
           {/* Info Bar */}
-          <div className="bg-gray-800 p-3 text-center rounded-t-lg flex justify-between items-center">
-            <div className="w-1/3 text-left">
-              <span className="text-lg">Round {roomInfo.currentRound} / {roomInfo.maxRounds}</span>
+          <div className="bg-gray-800 p-2 text-center rounded-t-lg flex flex-col sm:flex-row justify-between items-center gap-2">
+            <div className="w-full sm:w-1/3 text-center sm:text-left">
+              <span className="text-base sm:text-lg">Round {roomInfo.currentRound}/{roomInfo.maxRounds}</span>
             </div>
             
-            {/* --- 5. MODIFIED INFO BAR --- */}
-            <h2 className="text-xl font-bold w-1/3">
+            <h2 className="text-xl font-bold w-full sm:w-1/3 order-first sm:order-none">
               {isMyTurn ? (
                 <span className="text-yellow-400 tracking-widest">{wordToGuess}</span>
               ) : (
@@ -255,7 +254,7 @@ const Game = ({ roomInfo, setRoomInfo }) => {
               )}
             </h2>
             
-            <div className="w-1/3 text-right">
+            <div className="w-full sm:w-1/3 text-center sm:text-right">
               <span className="text-2xl font-bold text-yellow-400">{timer}</span>
             </div>
           </div>
@@ -265,8 +264,8 @@ const Game = ({ roomInfo, setRoomInfo }) => {
           />
         </div>
 
-        {/* --- 5. PASS NEW PROPS TO CHAT --- */}
-        <div className="lg:col-span-1 bg-gray-800 p-4 rounded-lg shadow-lg order-3">
+        {/* --- Chat (Right Column) --- */}
+        <div className="lg:col-span-1 bg-gray-800 p-4 rounded-lg shadow-lg order-2 lg:order-3">
           <Chat
             roomId={roomInfo.roomId}
             messages={messages}
