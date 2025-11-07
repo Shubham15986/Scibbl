@@ -149,7 +149,7 @@ const Game = ({ roomInfo, setRoomInfo }) => {
       socket.off('new-private-message', onNewPrivateMessage);
 
     };
-  }, [socket, setRoomInfo, chatTarget]);
+  }, [socket, setRoomInfo, roomInfo, chatTarget]);
 
   // --- 3. NEW useEffect TO CLEAR DOTS ON CLICK ---
   useEffect(() => {
