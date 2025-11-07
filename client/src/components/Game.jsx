@@ -1,5 +1,4 @@
-
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useSocket } from '../context/SocketContext';
 import Scoreboard from './Scoreboard';
 import Canvas from './Canvas';
@@ -25,6 +24,14 @@ const Game = ({ roomInfo, setRoomInfo }) => {
   const [privateMessages, setPrivateMessages] = useState({});
 
   const [unreadMessages, setUnreadMessages] = useState([]); // Stores an array of socket IDs
+
+  const canvasContainerRef = useRef(null);
+
+  useEffect(() => {
+    if (canvasContainerRef.current) {
+      canvasContainerRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, []);
 
   useEffect(() => {
     const onNewMessage = (message) => {
@@ -68,9 +75,11 @@ const Game = ({ roomInfo, setRoomInfo }) => {
       ]);
       setTurnEndInfo(null);
       setHint(''); // Clear old hint
+      if (canvasContainerRef.current) {
+        canvasContainerRef.current.scrollIntoView({ behavior: 'smooth' });
+      }
     };
     
-    // --- MODIFIED onYourTurn ---
     const onYourTurn = ({ wordChoices }) => {
             setIsMyTurn(true);
       setWordChoices(wordChoices); // This will now correctly show the modal
@@ -233,7 +242,7 @@ const Game = ({ roomInfo, setRoomInfo }) => {
         </div>
 
         {/* --- Center Column: Canvas & Info --- */}
-        <div className="lg:col-span-2 order-1 lg:order-2">
+        <div className="lg:col-span-2 order-1 lg:order-2" ref={canvasContainerRef}>
           {/* Info Bar */}
           <div className="bg-gray-800 p-2 text-center rounded-t-lg flex flex-col sm:flex-row justify-between items-center gap-2">
             <div className="w-full sm:w-1/3 text-center sm:text-left">
