@@ -20,7 +20,7 @@ export const useSocket = () => {
 
 
 export const SocketProvider = ({ children }) => {
-  const [isConnected, setIsConnected] = useState(socket.connected);
+  const [, setIsConnected] = useState(socket.connected);
 
   useEffect(() => {
     socket.on('connect', () => {
