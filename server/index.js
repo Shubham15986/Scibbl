@@ -27,8 +27,8 @@ const PORT = process.env.PORT || 3001;
 // Connect to MongoDB
 mongoose
   .connect(MONGO_URI)
-  .then(() => {})
-  .catch(() => {});
+  .then(() => console.log('MongoDB Connected Successfully'))
+  .catch((err) => console.error('MongoDB Connection Error:', err));
 
 // Auth routes
 app.post('/api/auth/register', async (req, res) => {
